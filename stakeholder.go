@@ -1,2 +1,0 @@
-// Stakeholder file
-package kreditbureau

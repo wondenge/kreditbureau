@@ -1,2 +1,0 @@
-// Guarantor file
-package kreditbureau
