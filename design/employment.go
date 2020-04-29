@@ -4,22 +4,23 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-// C. Individual Consumer Information
+// D. Individual Consumer Employment Information
 //
-// The Individual consumer record refers to the individual customer of the
-// institutions and contains a profile of the customer from the account opening
-// information and any other information the customer provides to the institution.
-var Individual = Type("individual", func() {
+// The Institution’s customers could be employed or self-employed.
+// Details of the customer’s employment are captured in the employment information record.
+// Where a customer has provided employment record details, the institution is required to
+// provide one record for the employment details as laid out below
+var Employment = Type("employment", func() {
 	Description("")
-	TypeName("Individual")
+	TypeName("Employment")
 	ContentType("application/json")
 
-	// The Family Name or Surname
+	// The Family Name or Surname of Customer.
 	Attribute("Surname", String, "", func() {
 		Meta("rpc:tag", "1")
 	})
 
-	//The First Name
+	//The First Name of Customer.
 	Attribute("Forename1", String, "", func() {
 		Meta("rpc:tag", "2")
 	})
@@ -102,7 +103,7 @@ var Individual = Type("individual", func() {
 		Meta("rpc:tag", "14")
 	})
 
-	// Any Additional Identification Document Provided.
+	// Secondary Identification Document Provided.
 	// Options Are:
 	// National ID
 	// Passport
@@ -150,91 +151,129 @@ var Individual = Type("individual", func() {
 		Meta("rpc:tag", "20")
 	})
 
-	// The Primary Telephone contact Number in the Form of :
+	// Client’s Email Address if provided
+	Attribute("Email", String, "", func() {
+		Meta("rpc:tag", "21")
+	})
+
+	// The Name of the Employer if not self-employed.
+	Attribute("EmployerName", String, "", func() {
+		Meta("rpc:tag", "22")
+	})
+
+	// Type Of employment.
+	// Options Available :
+	// Casual Contract
+	// Permanent,
+	// Pensionable
+	//Self-Employed
+	Attribute("EmploymentType", String, "", func() {
+		Meta("rpc:tag", "23")
+	})
+
+	// The Position in Organisation
+	Attribute("EmployeePosition", String, "", func() {
+		Meta("rpc:tag", "24")
+	})
+
+	// The Department Stationed
+	Attribute("EmployeeDepartment", String, "", func() {
+		Meta("rpc:tag", "25")
+	})
+
+	// The band within which the Customer’s Gross Monthly Salary falls.
+	// Options given are :
+	// A - 0 To 50,000 KES
+	// B - 50,000 To 100,000 KES
+	// C – 100,000 To 200,000 KES
+	// D – 200,000 To 250,000 KES
+	// E - Over 250,000 KES
+	Attribute("SalaryBand", String, "", func() {
+		Meta("rpc:tag", "26")
+	})
+
+	// Employer’s Telephone contact Number in the Form of :
 	// CCC-AAA-NNNNNNN
 	// Where :
 	// CCC is the Country Code
 	// AAA is the Area Code
 	// NNNNNNN is the Number
 	Attribute("TelephoneNumber1", String, "", func() {
-		Meta("rpc:tag", "21")
+		Meta("rpc:tag", "27")
 	})
 
-	// The Secondary Telephone contact Number in the Form of :
+	// The Employer’s Secondary Telephone contact Number in the Form of :
 	// CCC-AAA-NNNNNNN
 	// Where :
 	// CCC is the Country Code
 	// AAA is the Area Code
 	// NNNNNNN is the Number
 	Attribute("TelephoneNumber2", String, "", func() {
-		Meta("rpc:tag", "22")
+		Meta("rpc:tag", "28")
 	})
 
-	// The Any other Telephone contact Number in the Form of :
+	// Any other Employer Telephone contact Number in the Form of :
 	// CCC-AAA-NNNNNNN
 	// Where :
 	// CCC is the Country Code
 	// AAA is the Area Code
 	// NNNNNNN is the Number
 	Attribute("TelephoneNumber3", String, "", func() {
-		Meta("rpc:tag", "23")
-	})
-
-	// Client’s Postal Address Line1
-	// This is the first line of the Full Client’s Postal address
-	Attribute("PostalAddress1", String, "", func() {
-		Meta("rpc:tag", "24")
-	})
-
-	// Client’s Postal Address Line 2
-	// This is the second line of the Full Client’s Postal address
-	Attribute("PostalAddress2", String, "", func() {
-		Meta("rpc:tag", "25")
-	})
-
-	// Town of Client’s Postal Address
-	Attribute("Town", String, "", func() {
-		Meta("rpc:tag", "26")
-	})
-
-	// Country of Client’s Postal Address
-	Attribute("Country", String, "", func() {
-		Meta("rpc:tag", "27")
-	})
-
-	// Post Code of Client’s Address
-	Attribute("PostCode", String, "", func() {
-		Meta("rpc:tag", "28")
-	})
-
-	// Client’s residential Address e.g. Street Address, Estate or village
-	Attribute("PhysicalAddress1", String, "", func() {
 		Meta("rpc:tag", "29")
 	})
 
-	// House or Apartment number of Client’s Residence
-	Attribute("PhysicalAddress2", String, "", func() {
+	// Employer’s Postal Address Line1.
+	// First Line of the full employer’s Postal Address.
+	Attribute("PostalAddress1", String, "", func() {
 		Meta("rpc:tag", "30")
 	})
 
-	// Plot Land Ref (LR) No of Client’s residence
-	Attribute("PlotNumber", String, "", func() {
+	// Employer’s Postal Address Line 2.
+	// Second Line of the full employer’s Postal Address.
+	Attribute("PostalAddress2", String, "", func() {
 		Meta("rpc:tag", "31")
 	})
 
-	// Town of Client’s residence
-	Attribute("LocationTown", String, "", func() {
+	// Employer’s Town of Postal Address.
+	Attribute("Town", String, "", func() {
 		Meta("rpc:tag", "32")
 	})
 
-	// Country of Client’s residence
-	Attribute("LocationCountry", String, "", func() {
+	// Employer’s Country of Postal Address.
+	Attribute("Country", String, "", func() {
 		Meta("rpc:tag", "33")
 	})
 
-	// Client’s Email Address if provided
-	Attribute("Email", String, "", func() {
+	// Post Code of Employer’s Address.
+	Attribute("PostCode", String, "", func() {
 		Meta("rpc:tag", "34")
+	})
+
+	// Employer’s registered Office Street Address.
+	// The Location ( Street Name) of the Employer’s Offices.
+	Attribute("PhysicalAddress1", String, "", func() {
+		Meta("rpc:tag", "35")
+	})
+
+	// Employer’s Office building and office number.
+	// The Location ( Building or Apartment No) of the address Employer’s Office
+	Attribute("PhysicalAddress2", String, "", func() {
+		Meta("rpc:tag", "36")
+	})
+
+	// Office Plot Land Ref (LR) Number.
+	Attribute("PlotNumber", String, "", func() {
+		Meta("rpc:tag", "37")
+	})
+
+	// Employers Address Town.
+	Attribute("LocationTown", String, "", func() {
+		Meta("rpc:tag", "38")
+	})
+
+	// Employer’s Location Country
+	Attribute("LocationCountry", String, "", func() {
+		Meta("rpc:tag", "39")
 	})
 
 })
