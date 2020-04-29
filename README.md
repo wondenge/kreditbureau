@@ -3,8 +3,6 @@
 Kreditbureau adheres to Version 4 of the Data Specification Template Validation that was released by the
 Central Bank of Kenya, following consultations among commercial banks, the Kenya Deposit Insurance Corporation (KDIC), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
-## Domain Areas
-
 Kreditbureau covers the following information domains.
 
 #### 1. Institution Information
