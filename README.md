@@ -2,7 +2,7 @@
 
 > Credit Information Sharing for innovation and financial inclusion.
 
-`Kreditbureau` adheres to `Version 4` of the `Data Specification Template Validation` that was released by the
+Kreditbureau adheres to Version 4 of the Data Specification Template Validation that was released by the
 Central Bank of Kenya, following consultations among commercial banks, the Kenya Deposit Insurance Corporation (KDIC), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
 Lenders are quick to inform consumers when their credit profile is poor, but are mute when the score is good. Consequently, borrowers only know about the credit bureau when there is a problem. This needs to change. Banks in Kenya have been sharing positive data for years now, and therefore must begin to inform and reward their low risk customers with better terms.
