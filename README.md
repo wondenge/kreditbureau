@@ -3,14 +3,6 @@
 Kreditbureau adheres to Version 4 of the Data Specification Template Validation that was released by the
 Central Bank of Kenya, following consultations among commercial banks, the Kenya Deposit Insurance Corporation (KDIC), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
-## Background
-
-Lenders are quick to inform consumers when their credit profile is poor, but are mute when the score is good. Consequently, borrowers only know about the credit bureau when there is a problem. This needs to change. Banks in Kenya have been sharing positive data for years now, and therefore must begin to inform and reward their low risk customers with better terms.
-
-Secondly, lenders must be willing to invest in efforts to ensure highest standards of data quality. This is important because a borrower's credit report is a score-card on the character of individuals and corporates. It is imperative that every effort is made to provide accurate and updated information on each of their customers, without regard to status or social standing.
-
-Thirdly, there is need to address consumer complaints associated with credit information as promptly as possible. Where these issues escalate to disputes, lenders should explore alternative dispute resolution mechanisms. I am confident that the deliberations regarding Alternative Dispute Resolution, which are part of this conference, will provide insights into the critical aspects of consumer protection that are needed to ensure credibility of the whole mechanism.
-
 ## Domain Areas
 
 Kreditbureau covers the following information domains.
