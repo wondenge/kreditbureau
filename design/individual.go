@@ -575,7 +575,7 @@ var ICEAccount = Type("icea", func() {
 	// Amount Field
 	// Not more than 16 characters
 	// Mandatory Field
-	Attribute("Current Balance", String, "Current Balance", func() {
+	Attribute("CurrentBalance", String, "Current Balance", func() {
 		Meta("rpc:tag", "52")
 	})
 
@@ -583,7 +583,7 @@ var ICEAccount = Type("icea", func() {
 	// Mandatory if Overdue date is not null,
 	// Number of Days in Arrears
 	// & Number of Instalments in Arrears > 0
-	Attribute("Overdue Balance", String, "Overdue Balance", func() {
+	Attribute("OverdueBalance", String, "Overdue Balance", func() {
 		Meta("rpc:tag", "53")
 	})
 
@@ -595,7 +595,7 @@ var ICEAccount = Type("icea", func() {
 	// Date Field
 	// Not more than 8 characters
 	// Date can’t be in the future
-	Attribute("Overdue Date", String, "Overdue Date", func() {
+	Attribute("OverdueDate", String, "Overdue Date", func() {
 		Meta("rpc:tag", "54")
 	})
 
@@ -797,4 +797,85 @@ var ICEAccount = Type("icea", func() {
 		Meta("rpc:tag", "70")
 	})
 
+})
+
+var StoredICEAccount = ResultType("", func() {
+	TypeName("StoredICEAccount")
+	Attributes(func() {
+		Extend(ICEAccount)
+		Required()
+	})
+	View("", func() {
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("TradingAs")
+		Attribute("DoB")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("OldAccountNumber")
+		Attribute("Gender")
+		Attribute("Nationality")
+		Attribute("MaritalStatus")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocNumber")
+		Attribute("SecondaryIDocumentType")
+		Attribute("SecondaryIDocumentNumber")
+		Attribute("OtherIDocumentType")
+		Attribute("OtherIDocumentNumber")
+		Attribute("PassportCountryCode")
+		Attribute("MobileTelephoneNumber")
+		Attribute("HomeTelephoneNumber")
+		Attribute("WorkTelephoneNumber")
+		Attribute("PostalAddress1")
+		Attribute("PostalAddress2")
+		Attribute("PostalLocationTown")
+		Attribute("PostalLocationCountry")
+		Attribute("PostCode")
+		Attribute("PhysicalAddress1")
+		Attribute("PhysicalAddress2")
+		Attribute("PlotNumber")
+		Attribute("LocationTown")
+		Attribute("LocationCountry")
+		Attribute("ResidencyType")
+		Attribute("PINumber")
+		Attribute("ConsumerEmail")
+		Attribute("EmployerName")
+		Attribute("OccupationalIndustryType")
+		Attribute("EmploymentDate")
+		Attribute("EmploymentType")
+		Attribute("IncomeAmount")
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("AJSIndicator")
+		Attribute("AccountProductType")
+		Attribute("DateAccountOpened")
+		Attribute("InstalmentDueDate")
+		Attribute("OriginalAmount")
+		Attribute("FacilityCurrency")
+		Attribute("CurrentBalanceInKES")
+		Attribute("CurrentBalance")
+		Attribute("OverdueBalance")
+		Attribute("OverdueDate")
+		Attribute("DaysInArrears")
+		Attribute("InstalmentsInArrears")
+		Attribute("PrudentialRiskClassification")
+		Attribute("AccountStatus")
+		Attribute("AccountStatusDate")
+		Attribute("AccountClosureReason")
+		Attribute("RepaymentPeriod")
+		Attribute("DeferredPaymentDate")
+		Attribute("DeferredPaymentAmount")
+		Attribute("PaymentFrequency")
+		Attribute("DisbursementDate")
+		Attribute("NextInstalmentAmount")
+		Attribute("LatestPaymentDate")
+		Attribute("LastPaymentAmount")
+		Attribute("SecurityType")
+		Attribute("GroupID")
+
+	})
 })

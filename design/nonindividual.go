@@ -5,9 +5,9 @@ import (
 )
 
 // Non Individual Consumer and Account API
-var NonICEAccount = Type("company", func() {
+var Company = Type("company", func() {
 	Description("Non Individual Consumer and Account API")
-	TypeName("NonICEAccount")
+	TypeName("Company")
 	ContentType("application/json")
 
 	// The Name as Registered with the Registrar of Companies.
@@ -555,7 +555,7 @@ var NonICEAccount = Type("company", func() {
 	// been opened
 	// The difference of the number of days in arrears cannot be greater than
 	// the difference of the reporting period
-	Attribute("", String, "Number of Days In Arrears", func() {
+	Attribute("DaysInArrears", String, "Number of Days In Arrears", func() {
 		Meta("rpc:tag", "46")
 	})
 
@@ -729,4 +729,74 @@ var NonICEAccount = Type("company", func() {
 		Meta("rpc:tag", "59")
 	})
 
+})
+
+var StoredCompany = ResultType("", func() {
+	TypeName("StoredCompany")
+	Attributes(func() {
+		Extend(Company)
+		Required()
+	})
+	View("", func() {
+		Attribute("RegisteredName")
+		Attribute("TradingName")
+		Attribute("RegistrationDate")
+		Attribute("RegistrationNumber")
+		Attribute("PreviousRegistrationNumber")
+		Attribute("Nationality")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("OldAccountNumber")
+		Attribute("CompanyType")
+		Attribute("IndustryCode")
+		Attribute("AnnualTurnoverAmount")
+		Attribute("PINNumber")
+		Attribute("VATNumber")
+		Attribute("NofStakeholders")
+		Attribute("TradingStatus")
+		Attribute("TradingStatusDate")
+		Attribute("MainTelephoneNumber")
+		Attribute("OtherTelephoneNumber")
+		Attribute("PostalAddress1")
+		Attribute("PostalAddress2")
+		Attribute("Town")
+		Attribute("Country")
+		Attribute("PostCode")
+		Attribute("PhysicalAddress1")
+		Attribute("PhysicalAddress2")
+		Attribute("PlotNumber")
+		Attribute("PhysicalLocationTown")
+		Attribute("PhysicalLocationCountry")
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("AccountIndicator")
+		Attribute("OrganisationClass")
+		Attribute("AccountProductType")
+		Attribute("DateAccountOpened")
+		Attribute("InstalmentDueDate")
+		Attribute("PrudentialRiskClassification")
+		Attribute("OriginalAmount")
+		Attribute("FacilityCurrency")
+		Attribute("KESCurrentBalance")
+		Attribute("CurrentBalance")
+		Attribute("OverdueBalance")
+		Attribute("OverdueDate")
+		Attribute("DaysInArrears")
+		Attribute("InstalmentsInArrears")
+		Attribute("AccountStatus")
+		Attribute("AccountStatusDate")
+		Attribute("AccountClosureReason")
+		Attribute("RepaymentPeriod")
+		Attribute("DeferredPaymentDate")
+		Attribute("DeferredPaymentAmount")
+		Attribute("PaymentFrequency")
+		Attribute("DisbursementDate")
+		Attribute("NextInstalmentAmount")
+		Attribute("LatestPaymentDate")
+		Attribute("LastPaymentAmount")
+		Attribute("SecurityType")
+
+	})
 })

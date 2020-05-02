@@ -5,9 +5,9 @@ import (
 )
 
 // L. Fraudulent Activities API
-var Fraud = Type("fraud", func() {
+var FraudActivity = Type("fraudactivity", func() {
 	Description("Fraudulent Activities API")
-	TypeName("Fraud")
+	TypeName("FraudActivity")
 	ContentType("application/json")
 
 	// The Name of Lender Reporting the Fraud, as registered with the Registrar of companies.
@@ -63,7 +63,7 @@ var Fraud = Type("fraud", func() {
 	//
 	// Data is Alpha Numeric
 	// Not more than 20 characters
-	Attribute("Client Number", String, "Client Number", func() {
+	Attribute("ClientNumber", String, "Client Number", func() {
 		Meta("rpc:tag", "5")
 	})
 
@@ -73,7 +73,7 @@ var Fraud = Type("fraud", func() {
 	// Mandatory field
 	// Data is Alpha Numeric
 	// Not more than 20 characters
-	Attribute("Account Number", String, "Account Number", func() {
+	Attribute("AccountNumber", String, "Account Number", func() {
 		Meta("rpc:tag", "6")
 	})
 
@@ -81,7 +81,7 @@ var Fraud = Type("fraud", func() {
 	//
 	// Alphanumeric
 	// Not more than 50 Characters
-	Attribute("Fraud Type", String, "Fraud Type", func() {
+	Attribute("FraudType", String, "Fraud Type", func() {
 		Meta("rpc:tag", "7")
 	})
 
@@ -115,7 +115,7 @@ var Fraud = Type("fraud", func() {
 	//
 	// Currency field
 	// Not more than 16 Characters
-	Attribute("Loss Amount", String, "Loss Amount", func() {
+	Attribute("LossAmount", String, "Loss Amount", func() {
 		Meta("rpc:tag", "11")
 	})
 
@@ -125,14 +125,14 @@ var Fraud = Type("fraud", func() {
 	// Alphanumeric
 	// Not more than 3 Characters
 	// ISO Currency Codes
-	Attribute("Currency Code", String, "Currency Code", func() {
+	Attribute("CurrencyCode", String, "Currency Code", func() {
 		Meta("rpc:tag", "12")
 	})
 
 	// Incident Details
 	// Alphanumeric
 	// Not more than 200 characters
-	Attribute("Incident Details", String, "Incident Details", func() {
+	Attribute("IncidentDetails", String, "Incident Details", func() {
 		Meta("rpc:tag", "13")
 	})
 
@@ -219,4 +219,35 @@ var Fraud = Type("fraud", func() {
 		Meta("rpc:tag", "21")
 	})
 
+})
+
+var StoredFraudActivity = ResultType("", func() {
+	TypeName("StoredFraudActivity")
+	Attributes(func() {
+		Extend(FraudActivity)
+		Required()
+	})
+	View("", func() {
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("Fraud Type")
+		Attribute("FraudIncidentDate")
+		Attribute("FraudReportDate")
+		Attribute("Amount")
+		Attribute("LossAmount")
+		Attribute("CurrencyCode")
+		Attribute("IncidentDetails")
+		Attribute("ForensicInformation")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocumentNumber")
+		Attribute("AmountInKES")
+	})
 })

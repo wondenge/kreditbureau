@@ -226,3 +226,33 @@ var DailyPayment = Type("dailypayment", func() {
 		Meta("rpc:tag", "18")
 	})
 })
+
+
+var StoredDailyPayment = ResultType("", func() {
+	TypeName("")
+	Attributes(func() {
+		Extend(DailyPayment)
+		Required()
+	})
+	View("", func() {
+		Attribute("SnapshotDate")
+		Attribute("ClientType")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("CompanyName")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocNumber")
+		Attribute("AccountNumber")
+		Attribute("FacilityCurrency")
+		Attribute("OriginalAmount")
+		Attribute("PaymentAmount")
+		Attribute("PaymentDate")
+		Attribute("CurrentBalance")
+		Attribute("InstallmentsInArrears")
+		Attribute("DaysInArrears")
+		Attribute("AccountStatus")
+
+	})
+})

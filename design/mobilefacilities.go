@@ -117,7 +117,7 @@ var MobileFacility = Type("mobilefacility", func() {
 	// Mandatory Field
 	// Data is Alphanumeric
 	// Not more than 3 characters
-	Attribute("PrimaryIDocument Type", String, "Primary Identification Document Type", func() {
+	Attribute("PrimaryIDocumentType", String, "Primary Identification Document Type", func() {
 		Meta("rpc:tag", "11")
 	})
 
@@ -129,7 +129,7 @@ var MobileFacility = Type("mobilefacility", func() {
 	// For Passport: Alphanumeric
 	// For Alien: Numeric characters, Not more than 6 characters
 	// For Service ID: Numeric Characters, Not more than 6 characters
-	Attribute("Primary IDocument Number", String, "Primary Identification Document Number", func() {
+	Attribute("PrimaryIDocumentNumber", String, "Primary Identification Document Number", func() {
 		Meta("rpc:tag", "12")
 	})
 
@@ -379,5 +379,47 @@ var MobileFacility = Type("mobilefacility", func() {
 	// Mandatory Field
 	Attribute("LastPaymentAmount", String, "Last Payment Amount", func() {
 		Meta("rpc:tag", "31")
+	})
+})
+
+var StoredMobileFacility = ResultType("", func() {
+	TypeName("StoredMobileFacility")
+	Attributes(func() {
+		Extend(MobileFacility)
+		Required()
+	})
+	View("", func() {
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("TradingAs")
+		Attribute("DateOfBirth")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("Gender")
+		Attribute("Nationality")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocumentNumber")
+		Attribute("MobilePhoneNumber")
+		Attribute("AccountProductType")
+		Attribute("InstalmentDueDate")
+		Attribute("OriginalAmount")
+		Attribute("CurrencyOfFacility")
+		Attribute("CurrentBalanceInKES")
+		Attribute("CurrentBalance")
+		Attribute("OverdueBalance")
+		Attribute("OverdueDate")
+		Attribute("DaysInArrears")
+		Attribute("InstalmentsInArrears")
+		Attribute("PrudentialRiskClassification")
+		Attribute("AccountStatus")
+		Attribute("AccountStatusDate")
+		Attribute("RepaymentPeriod")
+		Attribute("DisbursementDate")
+		Attribute("InstalmentAmount")
+		Attribute("LatestPaymentDate")
+		Attribute("LastPaymentAmount")
+
 	})
 })

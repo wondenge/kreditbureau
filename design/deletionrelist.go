@@ -119,3 +119,23 @@ var DeletionRelist = Type("deletionrelist", func() {
 	})
 
 })
+
+var StoredDeletionRelist = ResultType("", func() {
+	TypeName("StoredDeletionRelist")
+	Attributes(func() {
+		Extend(DeletionRelist)
+		Required()
+	})
+	View("", func() {
+		Attribute("FunctionType")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("IDocumentType")
+		Attribute("IDocumentNumber")
+		Attribute("AccountNumber")
+		Attribute("SubmissionDate")
+		Attribute("DaysInArrears")
+	})
+})

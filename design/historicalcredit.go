@@ -103,7 +103,7 @@ var HistoricalCredit = Type("historicalcredit", func() {
 	// Mandatory Field
 	// Not more than 3 characters
 	// If Option “B” in 5.3.2, then option “005” Must be selected
-	Attribute("PrimaryIDocument Type", String, "Primary Identification Document Type", func() {
+	Attribute("PrimaryIDocumentType", String, "Primary Identification Document Type", func() {
 		Meta("rpc:tag", "9")
 	})
 
@@ -114,7 +114,7 @@ var HistoricalCredit = Type("historicalcredit", func() {
 	// For Passport: Alphanumeric
 	// For Alien: Numeric characters, Not more than 6 characters
 	// For Service ID: Numeric Characters , Not more characters than 6
-	Attribute("Primary IDocument Number", String, "Primary Identification Document Number", func() {
+	Attribute("PrimaryIDocumentNumber", String, "Primary Identification Document Number", func() {
 		Meta("rpc:tag", "10")
 	})
 
@@ -296,4 +296,38 @@ var HistoricalCredit = Type("historicalcredit", func() {
 		Meta("rpc:tag", "24")
 	})
 
+})
+
+var StoredHistoricalCredit = ResultType("", func() {
+	TypeName("StoredHistoricalCredit")
+	Attributes(func() {
+		Extend(HistoricalCredit)
+		Required()
+	})
+	View("", func() {
+		Attribute("SnapshotDate")
+		Attribute("ClientType")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("RegisteredName")
+		Attribute("TradingName")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocumentNumber")
+		Attribute("PINumber")
+		Attribute("AccountNumber")
+		Attribute("FacilityCurrency")
+		Attribute("OriginalAmount")
+		Attribute("CurrentBalance")
+		Attribute("OverdueBalance")
+		Attribute("DaysInArrears")
+		Attribute("InstalmentsInArrears")
+		Attribute("AccountStatus")
+		Attribute("PrudentialAssetClassification")
+		Attribute("LastPaymentDate")
+		Attribute("AccountProductType")
+		Attribute("InstalmentAmount")
+		Attribute("AdditionalInformation")
+	})
 })

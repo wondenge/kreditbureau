@@ -4,9 +4,9 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-var LinkDelinkIDs = Type("linkdelinkids", func() {
+var LinkDelink = Type("linkdelink", func() {
 	Description("Link-Delink IDs API")
-	TypeName("LinkDelinkIDs")
+	TypeName("LinkDelink")
 	ContentType("application/json")
 
 	// Refer to the following options
@@ -69,5 +69,20 @@ var LinkDelinkIDs = Type("linkdelinkids", func() {
 	// For Service ID: Numeric Characters, Not more than 6 characters
 	Attribute("IDocumentNumber2To", String, "Identification Document Number 2 To", func() {
 		Meta("rpc:tag", "5")
+	})
+})
+
+var StoredLinkDelink = ResultType("", func() {
+	TypeName("StoredLinkDelink")
+	Attributes(func() {
+		Extend(LinkDelink)
+		Required()
+	})
+	View("", func() {
+		Attribute("Function")
+		Attribute("IDocumentType1From")
+		Attribute("IDocumentNumber1From")
+		Attribute("IDocumentType2To")
+		Attribute("IDocumentNumber2To")
 	})
 })

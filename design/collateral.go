@@ -245,7 +245,7 @@ var Collateral = Type("collateral", func() {
 	//
 	// Alphanumeric
 	// Not more than 50 characters
-	Attribute("InstrumentOfClaimOrRecovery Type", String, "Instrument of Claim/Recovery Type", func() {
+	Attribute("InstrumentOfClaimOrRecoveryType", String, "Instrument of Claim/Recovery Type", func() {
 		Meta("rpc:tag", "22")
 	})
 
@@ -287,5 +287,41 @@ var Collateral = Type("collateral", func() {
 	// If yes, then there should be more than one record - Issue a waning
 	Attribute("MultipleCollateral", String, "Multiple Collateral", func() {
 		Meta("rpc:tag", "26")
+	})
+})
+
+var StoredCollateral = ResultType("", func() {
+	TypeName("StoredCollateral")
+	Attributes(func() {
+		Extend(Collateral)
+		Required()
+	})
+	View("", func() {
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("PrimaryIDocument")
+		Attribute("PrimaryIDocNumber")
+		Attribute("SecondaryIDocument")
+		Attribute("SecondaryIDocumentNumber")
+		Attribute("OtherIDocument")
+		Attribute("OtherIDocumentNumber")
+		Attribute("PINumber")
+		Attribute("CompanyVATNumber")
+		Attribute("CollateralType")
+		Attribute("CollateralReferenceNumber")
+		Attribute("CollateralLastValuationAmount")
+		Attribute("Collateral Currency")
+		Attribute("CollateralForcedSaleValue")
+		Attribute("NextValuationDate")
+		Attribute("CollateralExpiryDate")
+		Attribute("InstrumentOfClaimOrRecoveryType")
+		Attribute("LastValuationDate")
+		Attribute("SharedCollateral")
+		Attribute("PortionOfCollateralShared")
+		Attribute("MultipleCollateral")
 	})
 })

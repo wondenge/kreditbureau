@@ -247,3 +247,34 @@ var BouncedCheque = Type("bouncedcheque", func() {
 	})
 
 })
+
+var StoredBouncedCheque = ResultType("", func() {
+	TypeName("StoredBouncedCheque")
+	Attributes(func() {
+		Extend(BouncedCheque)
+		Required()
+	})
+	View("", func() {
+		Attribute("ClientType")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("CompanyName")
+		Attribute("PrimaryIDocument Type")
+		Attribute("PrimaryIDocumentNumber")
+		Attribute("BranchCodeOncheque")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("ChequeAccountType")
+		Attribute("ChequeAmount")
+		Attribute("ChequeNumber")
+		Attribute("ChequeCurrency")
+		Attribute("ChequeDate")
+		Attribute("ChequeBounceDate")
+		Attribute("ChequeBounceReasonCodes")
+		Attribute("LoanAccount")
+		Attribute("ChequeAmountInKES")
+
+	})
+})

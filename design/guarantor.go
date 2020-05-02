@@ -99,7 +99,7 @@ var Guarantor = Type("guarantor", func() {
 	// Not more than 50 Characters
 	// Allow Hyphen, Apostrophe, Space.
 	// Mandatory if option M/F is selected in field 4.4.13
-	Attribute("Forename 1", String, "First Name of Guarantor", func() {
+	Attribute("Forename1", String, "First Name of Guarantor", func() {
 		Meta("rpc:tag", "8")
 	})
 
@@ -110,7 +110,7 @@ var Guarantor = Type("guarantor", func() {
 	// Not more than 50 Characters
 	// Allow Hyphen, Apostrophe, Space,
 	// Conditional to field 4.4.13
-	Attribute("Forename 2", String, "Guarantor’s Second Name", func() {
+	Attribute("Forename2", String, "Guarantor’s Second Name", func() {
 		Meta("rpc:tag", "9")
 	})
 
@@ -121,7 +121,7 @@ var Guarantor = Type("guarantor", func() {
 	// Not more than 50 Characters
 	// Allow Hyphen, Apostrophe, Space,
 	// Conditional to field 4.4.13
-	Attribute("Forename 3", String, "Guarantor’s Other Names", func() {
+	Attribute("Forename3", String, "Guarantor’s Other Names", func() {
 		Meta("rpc:tag", "10")
 	})
 
@@ -472,4 +472,55 @@ var Guarantor = Type("guarantor", func() {
 		Meta("rpc:tag", "41")
 	})
 
+})
+
+var StoredGuarantor = ResultType("", func() {
+	TypeName("StoredGuarantor")
+	Attributes(func() {
+		Extend(Guarantor)
+		Required()
+	})
+	View("", func() {
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("ClientNumber")
+		Attribute("AccountNumber")
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("CompanyOrCorporateName")
+		Attribute("DOBorDOR")
+		Attribute("Gender")
+		Attribute("Nationality")
+		Attribute("MaritalStatus")
+		Attribute("GuaranteeType")
+		Attribute("GuarantorRelationship")
+		Attribute("GuaranteeLimit")
+		Attribute("PrimaryIDocument")
+		Attribute("PrimaryIDocNumber")
+		Attribute("SecondaryIDocument")
+		Attribute("SecondaryIDocumentNumber")
+		Attribute("OtherIDocument")
+		Attribute("OtherIDocumentNumber")
+		Attribute("EmployerName")
+		Attribute("EmploymentType")
+		Attribute("IncomeBand")
+		Attribute("MobileTelephoneNumber")
+		Attribute("HomeTelephoneNumber")
+		Attribute("WorkTelephoneNumber")
+		Attribute("PostalAddress1")
+		Attribute("PostalAddress2")
+		Attribute("Town")
+		Attribute("Country")
+		Attribute("PostCode")
+		Attribute("PhysicalAddress1")
+		Attribute("PhysicalAddress2")
+		Attribute("PlotNumber")
+		Attribute("PhysicalLocationTown")
+		Attribute("PhysicalLocationCountry")
+		Attribute("Email")
+	})
 })

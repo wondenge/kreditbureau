@@ -4,9 +4,9 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-var DelinkIDs = Type("delinkids", func() {
+var Delink = Type("delink", func() {
 	Description("Delink IDs from an Account API")
-	TypeName("DelinkIDs")
+	TypeName("Delink")
 	ContentType("application/json")
 
 	// The Family or Surname
@@ -107,5 +107,24 @@ var DelinkIDs = Type("delinkids", func() {
 	// For Service ID: Numeric Characters, Not more than characters allowed
 	Attribute("PrimaryIDocumentNumberL", String, "Primary identification Document Number to link", func() {
 		Meta("rpc:tag", "9")
+	})
+})
+
+var StoredDelink = ResultType("", func() {
+	TypeName("StoredDelink")
+	Attributes(func() {
+		Extend(Delink)
+		Required()
+	})
+	View("", func() {
+		Attribute("Surname")
+		Attribute("Forename1")
+		Attribute("Forename2")
+		Attribute("Forename3")
+		Attribute("AccountNumber")
+		Attribute("PrimaryIDocumentTypeD")
+		Attribute("PrimaryIDocumentNumberD")
+		Attribute("PrimaryIDocumentTypeL")
+		Attribute("PrimaryIDocumentNumberL")
 	})
 })
