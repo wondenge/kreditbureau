@@ -259,13 +259,13 @@ var ContactUpload = Type("contactupload", func() {
 
 })
 
-var StoredContactUpload = ResultType("", func() {
+var StoredContactUpload = ResultType("application/vnd.goa.contactupload", func() {
 	TypeName("StoredContactUpload")
 	Attributes(func() {
 		Extend(ContactUpload)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("SubmissionDate")
 		Attribute("ClientType")
 		Attribute("Surname")

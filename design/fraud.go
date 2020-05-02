@@ -221,13 +221,13 @@ var FraudActivity = Type("fraudactivity", func() {
 
 })
 
-var StoredFraudActivity = ResultType("", func() {
+var StoredFraudActivity = ResultType("application/vnd.goa.fraudactivity", func() {
 	TypeName("StoredFraudActivity")
 	Attributes(func() {
 		Extend(FraudActivity)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
 		Attribute("LendersBranchName")

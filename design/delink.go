@@ -110,13 +110,13 @@ var Delink = Type("delink", func() {
 	})
 })
 
-var StoredDelink = ResultType("", func() {
+var StoredDelink = ResultType("application/vnd.goa.delink", func() {
 	TypeName("StoredDelink")
 	Attributes(func() {
 		Extend(Delink)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("Surname")
 		Attribute("Forename1")
 		Attribute("Forename2")

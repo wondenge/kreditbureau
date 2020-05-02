@@ -120,13 +120,20 @@ var DeletionRelist = Type("deletionrelist", func() {
 
 })
 
-var StoredDeletionRelist = ResultType("", func() {
+var StoredDeletionRelist = ResultType("application/vnd.goa.deletionrelist", func() {
 	TypeName("StoredDeletionRelist")
 	Attributes(func() {
 		Extend(DeletionRelist)
-		Required()
+		Required(
+			"FunctionType",
+			"Surname",
+			"Forename1",
+			"IDocumentType",
+			"IDocumentNumber",
+			"AccountNumber",
+		)
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("FunctionType")
 		Attribute("Surname")
 		Attribute("Forename1")

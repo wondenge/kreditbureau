@@ -248,13 +248,16 @@ var BouncedCheque = Type("bouncedcheque", func() {
 
 })
 
-var StoredBouncedCheque = ResultType("", func() {
+// A – Individual Credit Consumer
+// B – Non-Individual Credit Consumer
+var StoredBouncedCheque = ResultType("application/vnd.goa.bouncedcheque", func() {
 	TypeName("StoredBouncedCheque")
 	Attributes(func() {
 		Extend(BouncedCheque)
 		Required()
 	})
-	View("", func() {
+
+	View("default", func() {
 		Attribute("ClientType")
 		Attribute("Surname")
 		Attribute("Forename1")

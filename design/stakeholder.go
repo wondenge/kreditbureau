@@ -405,7 +405,7 @@ var Stakeholder = Type("stakeholder", func() {
 	})
 })
 
-var StoredStakeholder = ResultType("", func() {
+var StoredStakeholder = ResultType("application/vnd.goa.stakeholder", func() {
 	TypeName("StoredStakeholder")
 	Attributes(func() {
 		Extend(Stakeholder)

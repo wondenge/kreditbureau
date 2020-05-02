@@ -247,13 +247,13 @@ var GroupGuarantee = Type("groupguarantee", func() {
 	})
 })
 
-var StoredGroupGuarantee = ResultType("", func() {
+var StoredGroupGuarantee = ResultType("application/vnd.goa.groupguarantee", func() {
 	TypeName("StoredGroupGuarantee")
 	Attributes(func() {
 		Extend(GroupGuarantee)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
 		Attribute("LendersBranchName")

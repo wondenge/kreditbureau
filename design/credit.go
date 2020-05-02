@@ -348,13 +348,13 @@ var CreditApplication = Type("creditapplication", func() {
 
 })
 
-var StoredCreditApplication = ResultType("", func() {
+var StoredCreditApplication = ResultType("application/vnd.goa.creditapplication", func() {
 	TypeName("StoredCreditApplication")
 	Attributes(func() {
 		Extend(CreditApplication)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
 		Attribute("LendersBranchName")

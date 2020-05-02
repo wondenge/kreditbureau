@@ -227,14 +227,13 @@ var DailyPayment = Type("dailypayment", func() {
 	})
 })
 
-
-var StoredDailyPayment = ResultType("", func() {
-	TypeName("")
+var StoredDailyPayment = ResultType("application/vnd.goa.dailypayment", func() {
+	TypeName("StoredDailyPayment")
 	Attributes(func() {
 		Extend(DailyPayment)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("SnapshotDate")
 		Attribute("ClientType")
 		Attribute("Surname")

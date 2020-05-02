@@ -731,13 +731,13 @@ var Company = Type("company", func() {
 
 })
 
-var StoredCompany = ResultType("", func() {
+var StoredCompany = ResultType("application/vnd.goa.company", func() {
 	TypeName("StoredCompany")
 	Attributes(func() {
 		Extend(Company)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("RegisteredName")
 		Attribute("TradingName")
 		Attribute("RegistrationDate")

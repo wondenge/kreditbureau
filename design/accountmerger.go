@@ -96,14 +96,21 @@ var AccountMerger = Type("accountmerger", func() {
 	})
 })
 
-var StoredAccountMerger = ResultType("", func() {
+var StoredAccountMerger = ResultType("application/vnd.goa.accountmerger", func() {
 	TypeName("StoredAccountMerger")
 	Attributes(func() {
 		Extend(AccountMerger)
-		Required()
+		Required(
+			"IDocumentType",
+			"IDocumentNumber",
+			"SurnameOrCompanyName",
+			"Forename1OrTradingName",
+			"NewAccountNumber",
+			"OldAccountNumber",
+		)
 	})
 
-	View("", func() {
+	View("default", func() {
 		Attribute("IDocumentType")
 		Attribute("IDocumentNumber")
 		Attribute("SurnameOrCompanyName")

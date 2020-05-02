@@ -474,13 +474,13 @@ var Guarantor = Type("guarantor", func() {
 
 })
 
-var StoredGuarantor = ResultType("", func() {
+var StoredGuarantor = ResultType("application/vnd.goa.guarantor", func() {
 	TypeName("StoredGuarantor")
 	Attributes(func() {
 		Extend(Guarantor)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
 		Attribute("LendersBranchName")

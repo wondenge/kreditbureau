@@ -5,7 +5,7 @@ import (
 )
 
 // Individual Consumer, Employer and Account API
-var ICEAccount = Type("icea", func() {
+var Individual = Type("individual", func() {
 	Description("Individual Consumer, Employer and Account API")
 	TypeName("ICEAccount")
 	ContentType("application/json")
@@ -799,13 +799,13 @@ var ICEAccount = Type("icea", func() {
 
 })
 
-var StoredICEAccount = ResultType("", func() {
-	TypeName("StoredICEAccount")
+var StoredIndividual = ResultType("application/vnd.goa.individual", func() {
+	TypeName("StoredIndividual")
 	Attributes(func() {
-		Extend(ICEAccount)
+		Extend(Individual)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("Surname")
 		Attribute("Forename1")
 		Attribute("Forename2")

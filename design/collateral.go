@@ -290,13 +290,13 @@ var Collateral = Type("collateral", func() {
 	})
 })
 
-var StoredCollateral = ResultType("", func() {
+var StoredCollateral = ResultType("application/vnd.goa.collateral", func() {
 	TypeName("StoredCollateral")
 	Attributes(func() {
 		Extend(Collateral)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
 		Attribute("LendersBranchName")

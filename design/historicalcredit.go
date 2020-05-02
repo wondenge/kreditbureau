@@ -298,13 +298,13 @@ var HistoricalCredit = Type("historicalcredit", func() {
 
 })
 
-var StoredHistoricalCredit = ResultType("", func() {
+var StoredHistoricalCredit = ResultType("application/vnd.goa.historicalcredit", func() {
 	TypeName("StoredHistoricalCredit")
 	Attributes(func() {
 		Extend(HistoricalCredit)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("SnapshotDate")
 		Attribute("ClientType")
 		Attribute("Surname")

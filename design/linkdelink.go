@@ -72,13 +72,13 @@ var LinkDelink = Type("linkdelink", func() {
 	})
 })
 
-var StoredLinkDelink = ResultType("", func() {
+var StoredLinkDelink = ResultType("application/vnd.goa.linkdelink", func() {
 	TypeName("StoredLinkDelink")
 	Attributes(func() {
 		Extend(LinkDelink)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("Function")
 		Attribute("IDocumentType1From")
 		Attribute("IDocumentNumber1From")

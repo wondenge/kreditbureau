@@ -382,13 +382,13 @@ var MobileFacility = Type("mobilefacility", func() {
 	})
 })
 
-var StoredMobileFacility = ResultType("", func() {
+var StoredMobileFacility = ResultType("application/vnd.goa.mobilefacility", func() {
 	TypeName("StoredMobileFacility")
 	Attributes(func() {
 		Extend(MobileFacility)
 		Required()
 	})
-	View("", func() {
+	View("default", func() {
 		Attribute("Surname")
 		Attribute("Forename1")
 		Attribute("Forename2")
