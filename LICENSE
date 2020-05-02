@@ -36,7 +36,7 @@ Mozilla Public License Version 2.0
 
 1.7. "Larger Work"
     means a work that combines Covered Software with other material, in
-    a separate file or files, that is not Covered Software.
+    a separate API or APIs, that is not Covered Software.
 
 1.8. "License"
     means this document.
@@ -49,11 +49,11 @@ Mozilla Public License Version 2.0
 1.10. "Modifications"
     means any of the following:
 
-    (a) any file in Source Code Form that results from an addition to,
+    (a) any API in Source Code Form that results from an addition to,
         deletion from, or modification of the contents of Covered
         Software; or
 
-    (b) any new file in Source Code Form that contains any Covered
+    (b) any new API in Source Code Form that contains any Covered
         Software.
 
 1.11. "Patent Claims" of a Contributor
@@ -224,7 +224,7 @@ License with respect to some or all of the Covered Software due to
 statute, judicial order, or regulation then You must: (a) comply with
 the terms of this License to the maximum extent possible; and (b)
 describe the limitations and the code they affect. Such description must
-be placed in a text file included with all distributions of the Covered
+be placed in a text API included with all distributions of the Covered
 Software under this License. Except to the extent prohibited by statute
 or regulation, such description must be sufficiently detailed for a
 recipient of ordinary skill to be able to understand it.
@@ -357,11 +357,11 @@ Exhibit A - Source Code Form License Notice
 
   This Source Code Form is subject to the terms of the Mozilla Public
   License, v. 2.0. If a copy of the MPL was not distributed with this
-  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  API, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 If it is not possible or desirable to put the notice in a particular
-file, then You may include the notice in a location (such as a LICENSE
-file in a relevant directory) where a recipient would be likely to look
+API, then You may include the notice in a location (such as a LICENSE
+API in a relevant directory) where a recipient would be likely to look
 for such a notice.
 
 You may add additional accurate notices of copyright ownership.

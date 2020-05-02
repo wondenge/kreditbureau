@@ -4,194 +4,346 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-// J. Credit Application Information
-
 var CreditApplication = Type("creditapplication", func() {
 
 	Description("")
 	TypeName("CreditApplication")
 	ContentType("application/json")
 
-	// The Primary Identification document Provided by the Applicant.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	// Company Registration No
+	// The Name of Lender Reporting the Loan Application, as registered
+	// with the Registrar of companies.
 	//
-	// National Identification is the preferred document for individuals but the others are acceptable.
-	// Alien Registration Certificates are issued to registered foreign nationals.
-	//Service Identification documents are issued to the National forces like Police and Army.
-	//The company registration Number is the Registration Number of the Institutional Applicant.
-	Attribute("PrimaryIDocument", String, "", func() {
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersRegisteredName", String, "Lenders Registered Name", func() {
 		Meta("rpc:tag", "1")
 	})
 
-	// The Number of the Primary Id Provided
-	Attribute("PrimaryIDocNumber", String, "", func() {
+	// The Lenders Trading Name.
+	//
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersTradingName", String, "Lenders Trading Name", func() {
 		Meta("rpc:tag", "2")
 	})
 
-	// Secondary Identification Document
-	// Provided by applicant.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	Attribute("SecondaryIDocument", String, "", func() {
+	// The Lenders Branch Name, where the Loan Application is reported to
+	// have taken place.
+	//
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersBranchName", String, "Lenders Branch Name", func() {
 		Meta("rpc:tag", "3")
 	})
 
-	// The Secondary Identification Doc Number if provided.
-	// Mandatory if Secondary Identification Document Type is provided.
-	Attribute("SecondaryIDocNumber", String, "", func() {
+	// The format of the branch code is IXXXYYY
+	// Where
+	// I – the Institution type code
+	// B for Banks
+	// D For MFBs
+	// S For Saccos
+	// M for MFIs
+	// L for Leasing Companies
+	// XXX is the Lenders Institution Code left padded with Zeros
+	// e.g. 098 for a bank whose code is 98.
+	// YYY is the Lenders Branch Code left padded with Zeros
+	// e.g. 009 for a branch whose code is 9.
+	Attribute("LendersBranchCode", String, "Lenders Branch Code", func() {
 		Meta("rpc:tag", "4")
 	})
 
-	// Any Other Additional Identification Document Provided by applicant.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	Attribute("OtherIDocument", String, "", func() {
+	// The following Options available:
+	// A – Individual Credit Consumer
+	// B – Non-Individual Credit Consumer
+	//
+	// Mandatory
+	// Lookup
+	// Alphanumeric
+	// Not more than 1 Character
+	Attribute("ClientType", String, "Type of Client", func() {
 		Meta("rpc:tag", "5")
 	})
 
-	// The Number of Other Identification Document, where provided .
-	// Mandatory if Other Identification Document Type is provided.
-	Attribute("OtherIDocumentNumber", String, "", func() {
+	// The Family Name or Surname
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Conditional to 4.8.5
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe, Space.
+	Attribute("Surname", String, "Surname", func() {
 		Meta("rpc:tag", "6")
 	})
 
-	// Additional Identification Document Provided by applicant.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	Attribute("AdditionalIDocument", String, "", func() {
+	// The First Name
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Conditional to 4.8.5
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe,
+	Attribute("Forename1", String, "The First Name", func() {
 		Meta("rpc:tag", "7")
 	})
 
-	// Additional Identification document Number, where provided.
-	// Mandatory if Additional Identification Document Type is provided.
-	Attribute("AdditionalIDocNumber", String, "", func() {
+	// The Given Name
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe,
+	Attribute("Forename2", String, "The Given Name", func() {
 		Meta("rpc:tag", "8")
 	})
 
-	// Applicant’s Kenya Revenue authority PIN Number
-	Attribute("PINNumber", String, "", func() {
+	// Other Name or Initials
+	//
+	// Alphanumeric
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe.
+	Attribute("Forename3", String, "Other Name or Initials", func() {
 		Meta("rpc:tag", "9")
 	})
 
-	// Applicable to Companies and non-individual consumers
-	Attribute("CompanyRegistrationNumber", String, "", func() {
+	// The Name as Registered with the Registrar of Companies.
+	//
+	// Alphanumeric
+	// Not more than 70 Characters
+	// Mandatory if 4.8.5 is Non-individual
+	Attribute("RegisteredName", String, "Registered Name", func() {
 		Meta("rpc:tag", "10")
 	})
 
-	// Applicable to Companies and non-individual consumers
-	Attribute("CompanyVATNumber", String, "", func() {
+	// The Business or Trading Name
+	//
+	// Alphanumeric
+	// Mandatory if 4.8.5 is Non-individual
+	// Not more than 70 Characters
+	Attribute("TradingName", String, "Trading Name", func() {
 		Meta("rpc:tag", "11")
 	})
 
-	// Bank and Branch where the Application was made.
-	Attribute("BranchCode", String, "", func() {
+	// The Applicant’s Primary Identification document Type Provided to the Lender.
+	// Options Are:
+	// 001 – National ID
+	// 002 – Passport
+	// 003 – Alien Registration
+	// 004 – Service ID
+	// 005 - Company Registration No
+	Attribute("PrimaryIDocument", String, "Primary Identification Document", func() {
 		Meta("rpc:tag", "12")
 	})
 
-	// Client Number making the Application, if used.
-	Attribute("ClientNumber", String, "", func() {
+	// The Identification document Number.
+	//
+	// Mandatory Field
+	// For ID: Numeric Characters, Between 1-8 characters
+	// For Passport: Alphanumeric
+	// For Alien: Numeric characters, Not more than 6 characters
+	// For Service ID: Numeric Characters, Not more than 6 characters
+	Attribute("PrimaryIDoc Number", String, "Primary Identification Doc Number", func() {
 		Meta("rpc:tag", "13")
 	})
 
-	// Account Number if available of applicant
-	Attribute("AccountNumber", String, "", func() {
+	// The Applicant’s Secondary Identification Document Type, if Provided to the Lender.
+	// Options Are:
+	// 001 – National ID
+	// 002 – Passport
+	// 003 – Alien Registration
+	// 004 – Service ID
+	//
+	// Data is Alpha Numeric
+	// Not more than 3 Characters
+	Attribute("SecondaryIDocument", String, "Secondary Identification Document", func() {
 		Meta("rpc:tag", "14")
 	})
 
-	// Application reference Number provided by the institution
-	Attribute("ApplicationNumber", String, "", func() {
+	// Mandatory if Secondary Identification Document type is provided.
+	//
+	// For ID: Numeric Characters, between 1-8 characters
+	// For Passport: Alphanumeric
+	// For Alien: Numeric characters, Not more than 6 characters
+	// For Service ID: Numeric Characters
+	// Not more than 6 characters
+	Attribute("SecondaryIDocument Number", String, "Secondary Identification Document Number", func() {
 		Meta("rpc:tag", "15")
 	})
 
-	// Whether the application is for a secured or unsecured facility
-	// Options :
-	// U - Unsecured
-	// S - Secured
-	Attribute("FacilityApplicationType", String, "", func() {
+	// The Applicant’s Other Identification document type, if Provided to the Lender.
+	// Options Are:
+	// 001 – National ID
+	// 002 – Passport
+	// 003 – Alien Registration
+	// 004 – Service ID
+	//
+	// Data is Alpha Numeric
+	// Not more than 3 Characters
+	Attribute("OtherIDocument", String, "Other Identification Document", func() {
 		Meta("rpc:tag", "16")
 	})
 
-	// Date Application was made
-	Attribute("ApplicationDate", String, "", func() {
+	// Mandatory if Other Identification document type is provided.
+	//
+	// Data is Alphanumeric
+	// Not more than 20 Characters
+	Attribute("OtherIDocument Number", String, "Other Identification Document Number", func() {
 		Meta("rpc:tag", "17")
 	})
 
-	// The amount of Application for facility
-	Attribute("ApplicationAmount", String, "", func() {
+	// Client Reference Number Linking to Applicant’s account the Lender’s system.
+	// This is for Client-Centric systems.
+	//
+	// Data is Alpha Numeric
+	// Not more than 20 characters
+	Attribute("ClientNumber", String, "Client Number", func() {
 		Meta("rpc:tag", "18")
 	})
 
-	// ISO Currency Code of Facility. Default is Kenya Shillings ( KES)
-	Attribute("ApplicationCurrency", String, "", func() {
+	// Revenue Authority Personal Income Tax Number.
+	//
+	// Data Format is Alphanumeric
+	// Not more than 11 characters
+	// - 1 chr is Alphanumeric
+	// - Last chr is Alphanumeric
+	// - Rest are 9 Numeric characters only
+	Attribute("PINumber", String, "PIN Number", func() {
 		Meta("rpc:tag", "19")
 	})
 
-	// Kenya equivalent of the Application.
-	// This should be the same as the application amount if the amount is in Kenya shillings.
-	Attribute("KESEquivalent", String, "", func() {
+	// Account Number Linking to Applicant’s Account in the Lender’s System.
+	// The Account Number Is the Same as Client Number for Account Centric Systems.
+	//
+	// Alphanumeric
+	// Not more than 20 Characters
+	Attribute("AccountNumber", String, "Account Number", func() {
 		Meta("rpc:tag", "20")
 	})
 
-	// The Exchange rate used in the application.
-	// If application is in Kenya shillings the Rate should be 1.00
-	Attribute("ExchangeRate", String, "", func() {
+	// The Date the Application was made to the Lender.
+	//
+	// Date Field
+	// Cannot be in the future
+	// Not more than 8 characters
+	Attribute("ApplicationDate", String, "Application Date", func() {
 		Meta("rpc:tag", "21")
 	})
 
-	// Product Type.
-	// Options are :
-	// A – Current Account
-	// B - Loan Account
-	// C - Credit Card
-	// D - Line of Credit
-	// E - Revolving
-	Attribute("ProductType", String, "", func() {
+	// Internal Application Reference number.
+	//
+	// Alphanumeric
+	// Mandatory
+	// Not more than 20 characters
+	Attribute("ApplicationNumber", String, "Application Number", func() {
 		Meta("rpc:tag", "22")
 	})
 
-	// Repayment period in Number of Months Applied for.
-	// Where the repayment is not specified in months, then the period shall
-	// be approximate dup to the nearest months.
-	Attribute("ApplicationDuration", String, "", func() {
+	// The Type of Facility Options:
+	// U - Unsecured
+	// S - Secured
+	//
+	// Lookup
+	// Alphanumeric
+	// Not more than 1 Character
+	Attribute("FacilityApplicationType", String, "Facility application Type", func() {
 		Meta("rpc:tag", "23")
 	})
 
-	// The status of the Application at reporting Time.
-	// Options are :
-	// A - Pending
-	// B - Awaiting documentation
-	// C - Securities Perfection
-	// D - Declined
-	// E - Withdrawn
-	// F - Approved
-	// G - Pending disbursement
-	Attribute("ApplicationStatus", String, "", func() {
+	// Amount applied for.
+	//
+	// Amount Field
+	// Cannot be zero or negative
+	// Not more than 16 Character
+	// Mandatory Field
+	Attribute("ApplicationAmount", String, "Application Amount", func() {
 		Meta("rpc:tag", "24")
 	})
 
-	// The date of the Status above.
-	// When the status changes from one state to another as the application is processed,
-	// the date of the status change from the processing is reported.
-	Attribute("StatusDate", String, "", func() {
+	// ISO Currency in which facility is requested for.
+	// Default is KES
+	//
+	// ISO
+	// Mandatory
+	// Alphanumeric
+	// Not more than 3 characters
+	Attribute("ApplicationCurrency", String, "Application Currency", func() {
 		Meta("rpc:tag", "25")
 	})
 
-	// The Reason for the status change
-	Attribute("StatusUpdateReason", String, "", func() {
+	// The Account Product Type :
+	// A –Overdraft
+	// B – Credit Cards
+	// C – Business Working Capital Loans
+	// D – Business Expansion Loans
+	// E – Mortgage Loans
+	// F – Asset Finance Loans
+	// G – Trade Finance Facilities
+	// H – Personal Loans
+	// I – Mobile Loan
+	// J – Insurance Premium Financing
+	// K – Group Loans
+	// L – Uncleared Effects
+	//
+	// Lookup
+	// Mandatory
+	// Not more than 1 character
+	Attribute("ProductType", String, "Product Type", func() {
 		Meta("rpc:tag", "26")
 	})
+
+	// Number of Months Applied for.
+	// Conditional with Product Type
+	// Not Mandatory for Credit Cards
+	//
+	// Number Field
+	// Not more than 3 Characters
+	// Cannot be zero or negative
+	Attribute("LoanTerm", String, "Term of Loan", func() {
+		Meta("rpc:tag", "27")
+	})
+
+	// The Current status of the Application.
+	// Options are:
+	// A - Pending
+	// B - Awaiting Docs
+	// C - Securities Perfection
+	// D - Declined by the Bank
+	// E - Withdrawn
+	// F - Approved
+	// G - Pending disbursement
+	// H – Fully Disbursed
+	// I – Customer Declines Offer
+	//
+	// Lookup
+	// Alphanumeric
+	// Not more than 1 Character
+	Attribute("ApplicationStatus", String, "Application Status", func() {
+		Meta("rpc:tag", "28")
+	})
+
+	// Required if application is Declined.
+	// A= Over indebted
+	// B = Failed credit criteria
+	// C= Failed verification – (e.g. Income/Employer could not be verified)
+	// D = Lacks ability to repay
+	// E = Weak Credit History
+	// F = Insufficient Collateral
+	//
+	// Lookup
+	// Alphanumeric
+	// Not more than 1 Character
+	Attribute("ApplicationDeclineReason", String, "Application Decline Reason codes", func() {
+		Meta("rpc:tag", "29")
+	})
+
+	// Date of status of Update
+	// Date Field
+	// Mandatory Field
+	// Cannot be in the future
+	Attribute("ApplicationStatusDate", String, "Application Status Date", func() {
+		Meta("rpc:tag", "30")
+	})
+
 })

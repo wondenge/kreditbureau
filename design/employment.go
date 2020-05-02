@@ -11,27 +11,48 @@ import (
 // Where a customer has provided employment record details, the institution is required to
 // provide one record for the employment details as laid out below
 var Employment = Type("employment", func() {
-	Description("")
+	Description("Individual Consumer, Employer and Account API")
 	TypeName("Employment")
 	ContentType("application/json")
 
-	// The Family Name or Surname of Customer.
-	Attribute("Surname", String, "", func() {
+	// The Family Name or Surname
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Mandatory Field
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe, Space
+	Attribute("Surname", String, "Surname", func() {
 		Meta("rpc:tag", "1")
 	})
 
 	//The First Name of Customer.
-	Attribute("Forename1", String, "", func() {
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Mandatory Field
+	// Not more than 50
+	// Allow Hyphen, Apostrophe
+	Attribute("Forename1", String, "The First Name", func() {
 		Meta("rpc:tag", "2")
 	})
 
 	// The Given Name
-	Attribute("Forename2", String, "", func() {
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Not more than 50
+	// Allow Hyphen, Apostrophe,
+	Attribute("Forename2", String, "The Given Name", func() {
 		Meta("rpc:tag", "3")
 	})
 
 	// Other Name or Initials
-	Attribute("Forename3", String, "", func() {
+	//
+	// Alphanumeric
+	// Not more than 50
+	// Allow Hyphen, Apostrophe,
+	Attribute("Forename3", String, "Other Name or Initials", func() {
 		Meta("rpc:tag", "4")
 	})
 

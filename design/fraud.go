@@ -4,163 +4,219 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-// L. Fraudulent Activities
+// L. Fraudulent Activities API
 var Fraud = Type("fraud", func() {
-	Description("Fraudulent Activities")
+	Description("Fraudulent Activities API")
 	TypeName("Fraud")
 	ContentType("application/json")
 
-	// The Fraud Status as reported by the Institution.
-	// Options Are :
-	// A - Attempted
-	// B - Suspected
-	// C - Alleged
-	// D - Proven
-	// E - Admitted
-	Attribute("FraudStatus", String, "", func() {
+	// The Name of Lender Reporting the Fraud, as registered with the Registrar of companies.
+	//
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersRegisteredName", String, "Lenders Registered Name", func() {
 		Meta("rpc:tag", "1")
 	})
 
-	// Whether Fraudster is an individual or Corporate
-	// Options are:
-	// I - Individual
-	// C – Corporate entity
+	// The Lenders Trading Name.
 	//
-	// Provide Stakeholder Profile information for Corporate Consumers.
-	Attribute("IndividualOrCorporateName", String, "", func() {
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersTradingName", String, "Lenders Trading Name", func() {
 		Meta("rpc:tag", "2")
 	})
 
-	// Name of the defaulter
-	Attribute("Name", String, "", func() {
+	// The Lenders Branch Name, where the fraud is reported to have taken place.
+	//
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 50 characters
+	Attribute("LendersBranchName", String, "Lenders Branch Name", func() {
 		Meta("rpc:tag", "3")
 	})
 
-	// Kenya Revenue Authority Income Tax PIN Number
-	Attribute("PINNumber", String, "", func() {
+	// The format of the branch code is IXXXYYY
+	// Where
+	// I – the Institution type code
+	// B for Banks
+	// D For MFBs
+	// S For Saccos
+	// M for MFIs
+	// L for Leasing Companies
+	// XXX is the Lenders Institution Code left padded with Zeros
+	// e.g. 098 for a bank whose code is 98.
+	// YYY is the Lenders Branch Code left padded with Zeros
+	// e.g. 009 for a branch whose code is 9.
+	//
+	// Mandatory Field
+	// Alphanumeric
+	// Not more than 7 characters
+	Attribute("LendersBranchCode", String, "Lenders Branch Code", func() {
 		Meta("rpc:tag", "4")
 	})
 
-	// Nationality of involved party or Country of Registration if Corporate.
-	// Default Kenyan
-	Attribute("Nationality", String, "", func() {
+	// Client Reference Number Linking to
+	// Account involved in the Fraud in the Lender’s system.
+	// This is for Client-Centric systems.
+	//
+	// Data is Alpha Numeric
+	// Not more than 20 characters
+	Attribute("Client Number", String, "Client Number", func() {
 		Meta("rpc:tag", "5")
 	})
 
-	// The Primary Identification document Provided on Opening the Account.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	// Company Registration No
+	// Account Number Linking to Account involved in the Fraud, in the Lender’s System.
+	//The Account Number Is the Same as Client Number for Account Centric Systems.
 	//
-	// National Identification is the preferred document for individuals but the others are acceptable.
-	// Alien Registration Certificates are issued to registered foreign nationals.
-	// Service Identification documents are issued to the National forces like Police and Army.
-	// The company registration Number is the Registration Number of the company account holder.
-	Attribute("PrimaryIDocument", String, "", func() {
+	// Mandatory field
+	// Data is Alpha Numeric
+	// Not more than 20 characters
+	Attribute("Account Number", String, "Account Number", func() {
 		Meta("rpc:tag", "6")
 	})
 
-	Attribute("PrimaryIDocNumber", String, "", func() {
+	// Brief Description of fraud type.
+	//
+	// Alphanumeric
+	// Not more than 50 Characters
+	Attribute("Fraud Type", String, "Fraud Type", func() {
 		Meta("rpc:tag", "7")
 	})
 
-	// Other Secondary identification information on the account.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	Attribute("SecondaryIDocument", String, "", func() {
+	// Date on which Fraud took place.
+	//
+	// Date Field
+	// Not more than 8 characters
+	// Can’t be in future
+	Attribute("FraudIncidentDate", String, "Fraud Incident Date", func() {
 		Meta("rpc:tag", "8")
 	})
 
-	// Mandatory if Secondary Identification document provided.
-	Attribute("SecondaryIDocumentNumber", String, "", func() {
+	// Date on which Fraud was reported.
+	//
+	// Date Field
+	// Not more than 8 Characters
+	// Can’t be in future
+	Attribute("FraudReportDate", String, "Fraud Report Date", func() {
 		Meta("rpc:tag", "9")
 	})
 
-	// Any Other Identification information on the Account.
-	// Options Are:
-	// National ID
-	// Passport
-	// Alien Registration
-	// Service ID
-	Attribute("OtherIDocument", String, "", func() {
+	// Amount involved in Fraud
+	//
+	// Amount Field
+	// Not more than 16 characters
+	Attribute("Amount", String, "Amount", func() {
 		Meta("rpc:tag", "10")
 	})
 
-	// Mandatory if Other Identification document provided
-	Attribute("OtherIDocumentNumber", String, "", func() {
+	// Actual loss incurred in the fraud as at reporting date.
+	//
+	// Currency field
+	// Not more than 16 Characters
+	Attribute("Loss Amount", String, "Loss Amount", func() {
 		Meta("rpc:tag", "11")
 	})
 
-	// If Company and If info available
-	Attribute("CompanyVATNumber", String, "", func() {
+	// Currency code of the Amount involved in the Fraud.
+	// Default is Kenya Shillings
+	//
+	// Alphanumeric
+	// Not more than 3 Characters
+	// ISO Currency Codes
+	Attribute("Currency Code", String, "Currency Code", func() {
 		Meta("rpc:tag", "12")
 	})
 
-	// Bank and Branch Code where fraud committed
-	Attribute("BranchCode", String, "", func() {
+	// Incident Details
+	// Alphanumeric
+	// Not more than 200 characters
+	Attribute("Incident Details", String, "Incident Details", func() {
 		Meta("rpc:tag", "13")
 	})
 
-	// Reference Number linking Customer account on which incidence involved to Banks’ Core system
-	Attribute("ClientNumber", String, "", func() {
+	// A brief on the Forensic evidence
+	//
+	// Alphanumeric
+	// Not more than 200 Characters
+	Attribute("ForensicInformation", String, "Forensic Information", func() {
 		Meta("rpc:tag", "14")
 	})
 
-	// Account Number linking Account involved in the fraud incident to the Bank’s Accounting system.
-	Attribute("AccountNumber", String, "", func() {
+	// The Family Name or Surname of the Person Involved in the Fraud.
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Mandatory
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe, Space,
+	Attribute("Surname", String, "Surname", func() {
 		Meta("rpc:tag", "15")
 	})
 
-	// The Account Product Type.
-	// Options are:
-	// A - Current Account
-	// B - Loan Account
-	// C - Credit Card
-	// D - Line of Credit
-	// E - Revolving Credit
-	Attribute("ConsumerClassification", String, "", func() {
+	// The First Name of the Person Involved in the Fraud.
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Mandatory
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe
+	Attribute("Forename1", String, "The First Name", func() {
 		Meta("rpc:tag", "16")
 	})
 
-	// Date the fraud incident took place or was detected
-	Attribute("IncidentDate", String, "", func() {
+	// The Given Name of the Person Involved in the Fraud.
+	//
+	// Alphanumeric
+	// More than 1 character
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe,
+	Attribute("Forename2", String, "The Given Name", func() {
 		Meta("rpc:tag", "17")
 	})
 
-	// Date the Fraud was reported to BFID or police
-	Attribute("ReportDate", String, "", func() {
+	// Other Name or Initials of the Person Involved in the Fraud.
+	//
+	// Alphanumeric
+	// Not more than 50 Characters
+	// Allow Hyphen, Apostrophe.
+	Attribute("Forename3", String, "Other Name or Initials", func() {
 		Meta("rpc:tag", "18")
 	})
 
-	// Amount involved in the fraud
-	Attribute("Amount", String, "", func() {
+	// Refer to for Acceptable Values
+	// 001 - National ID
+	// 002 - Passport
+	// 003 - Alien Registration
+	// 004 - Service ID
+	// 005 - Company Registration Number
+	//
+	// Mandatory Field
+	// Data is Alpha Numeric
+	// Not more than 3 Characters
+	Attribute("PrimaryIDocumentType", String, "Primary Identification Document Type", func() {
 		Meta("rpc:tag", "19")
 	})
 
-	// Actual loss incurred in the fraud as at reporting date.
-	Attribute("LossAmount", String, "", func() {
+	// The Number of the Primary Identification Document provided on Opening of the Account.
+	//
+	// Mandatory Field
+	// For ID: Numeric Characters, Between 1-8 characters
+	// For Passport: Alphanumeric
+	// For Alien: Numeric characters, Not more than 6 characters
+	// For Service ID: Numeric Characters, Not more than 6 characters
+	Attribute("PrimaryIDocumentNumber", String, "Primary Identification Document Number", func() {
 		Meta("rpc:tag", "20")
 	})
 
-	// Currency of the amounts involved default is Kenya shillings - KES
-	Attribute("CurrencyCode", String, "", func() {
+	// The Equivalent Amount involved in the fraud in KES.
+	//
+	// Mandatory Field
+	// Currency Field
+	// No more than 16 Characters
+	Attribute("AmountInKES", String, "Amount in Kenya Shillings", func() {
 		Meta("rpc:tag", "21")
-	})
-
-	// Short explanation of the nature of the incident
-	Attribute("IncidentDetails", String, "", func() {
-		Meta("rpc:tag", "22")
-	})
-
-	// Summary of any information available from the incident for investigation/forensic use
-	Attribute("ForensicInformation", String, "", func() {
-		Meta("rpc:tag", "23")
 	})
 
 })

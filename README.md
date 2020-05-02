@@ -1,56 +1,75 @@
-# Kreditbureau - Financial Sector Deepening redefined.
+# Kreditbureau - API driven Credit Reporting.
 
 [Kreditbureau](https://github.com/wondenge/kreditbureau) adheres to Version 4 of the Data Specification Template Validation that was released by the [Central Bank of Kenya](https://www.centralbank.go.ke/), following consultations among commercial banks, the [Kenya Deposit Insurance Corporation (KDIC)](https://kdic.go.ke), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
-Kreditbureau covers the following information domains.
+# 1. Monthly Batch APIs
 
-#### 1. Institution Information
+## 1.1 NonIndividualAccount API
 
-This comprises macro level data on 16 mandatory fields and is valuable not for borrower risk assessment, but for measuring regulatory compliance as it allows regulators to double check the total value of outstanding accounts, etc., against the totals from each individual and non-individual consumer information. It will be not constitute part of credit reports.
+This API is mandatory for credit providers who have advanced a credit facility to non-individual consumers.
 
-#### 2. Individual Branch Information
+## 1.2 IndividualAccount API
 
-Like the Institution Information, this provides economic data that is not necessary for risk assessment or establishing a financial identity. The data mandated comprises information valuable for monitoring regulatory compliance and will not be in credit files.
+This API is mandatory for credit providers who have advanced credit facilities to individual consumers.
 
-#### 3. Individual Consumer Information
+## 1.3 Stakeholders API
 
-Data under the rubric of individual consumer information is the central source of data for financial identity for all loans made to individuals. The 31 fields cover name, identifying numbers, addresses, postal codes, and other contact information.
+This API is mandatory if non-individual accounts exist.
 
-#### 4. Individual Consumer Employment
+## 1.4 Guarantors API
 
-Individual Consumer Employment data is valuable both for matching (or establishing financial identity) and for risk assessment especially as it can speak to capacity. Type of employment and gross monthly income assist in establishing the ability of a borrower to afford a loan. Employer data helps match a client to an account, though again mismatches on employment data will
-not necessarily indicate different individuals if consumer change jobs regularly. The data will have more value if it is updated periodically as opposed to providing only a historic snapshot of the consumers’ employment at a given
-point in time.
+This API ptovides guarantor information for a loan. This includes group guarantors.
 
-#### 5. Non-Individual Consumer
+## 1.5 BouncedCheques API
 
-The data, like individual consumer information, is central for establishing the financial identity of non-individual borrowers. The 30 fields cover registered name, trading name, registration number, company type, industry code, PIN
-number, VAT number and other fields serve to establish an institutional borrower’s identity.
+This API provides information about bounced cheques.
 
-#### 6. Stakeholder Information
+## 1.6 Collaterals API
 
-Stakeholder information can assist risk assessment for non-individual borrowers, but is more like to have greater value in establishing financial identity. The data can assist in due diligence check for corporate borrowers.
+This API updates a collaterals (items, funds and/or property pledged to secure a loan or a debt.)
 
-#### 7. Account Information
+## 1.7 Fraud API
 
-The data contained in the account information file is the core of credit file as it contains information on the key behavior aspects of the borrower, specifically data on their payment patterns and level of exposure. It also provides information on the longevity of the account.
+This API submits fraudlent information that has been proven in a court of law.
 
-#### 8. Guarantor Information
+## 1.8 CreditApplications API
 
-Guarantor information assists in providing information on the extent to which a borrower is exposed in their guarantees on the loans of others. This data also assists in assessing the risk of loans of an individual as guarantors mitigate the risk of default.
+This API submits new loan applications.
 
-#### 9. Bounced Cheque Information
+## 1.9 GroupGuarantee API
 
-Bounced cheque data is often a valuable indicator of credit risk.
+This API lists members of a group in a group-lending methodology.
 
-#### 10. Credit Application Information
+# 2. Daily Batch APIs
 
-Credit application data is important as indicators whether a borrower is suddenly or excessively shopping for credit is an indicator of risk and impending exposure. In line with international practice, this information will in the near future be provided real time in order to be of greater value to lenders who receive applications from serial applicants.
+## 2.1 DailyPayment API
 
-#### 11. Collateral Register
+This API reports any payment(s) made into a credit facility on a given date.
 
-Collateral registries are important collateral registries, the same asset against several loans, reducing the collateral registry is often a basic system.
+## 2.2 MobileFacility API
 
-#### 12. Fraudulent Activities
+This API reports new mobile loans granted by a lender.
 
-Data on fraudulent activities is very useful in the issuance of credit, as fraud is a special category of risk.
+## 2.3 DelinkID API
+
+This API delinks an ID from a record that was previously submitted to the Bureau.
+
+## 2.4 LinkDelinkIDs API
+
+This API links IDs e.g. ID to a Passport or Service ID or Alien IDs.
+
+## 2.5 AccountsMerger API
+
+The API is to merge accounts.This could be as a result of system change.
+
+## 2.6 DeletionRelist API
+
+This API deletes default history or relist deleted historical data of a customer.
+
+## 2.7 HistoricalCredit API
+
+This API updates the credit information of a facility which was erroneously submitted.
+
+## 2.8 ContactUpload API
+
+This API updates contact information on a given borrowing client.
