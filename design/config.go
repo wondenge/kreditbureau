@@ -12,5 +12,6 @@ var NotFound = Type("NotFound", func() {
 		Meta("rpc:tag", "1")
 	})
 	Field(2, "id", String, "ID of missing resource")
+
 	Required("message", "id")
 })

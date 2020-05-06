@@ -4,36 +4,29 @@ import (
 	. "goa.design/goa/v3/dsl"
 )
 
-// L. Fraudulent Activities API
 var FraudActivity = Type("fraudactivity", func() {
 	Description("Fraudulent Activities API")
 	TypeName("FraudActivity")
 	ContentType("application/json")
 
-	// The Name of Lender Reporting the Fraud, as registered with the Registrar of companies.
-	//
-	// Mandatory Field
-	// Alphanumeric
-	// Not more than 50 characters
-	Attribute("LendersRegisteredName", String, "Lenders Registered Name", func() {
+	Attribute("LendersRegisteredName", String, func() {
+		Description("Name of Lender Reporting the Fraud") // registered with the Registrar of companies
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "1")
 	})
 
-	// The Lenders Trading Name.
-	//
-	// Mandatory Field
-	// Alphanumeric
-	// Not more than 50 characters
-	Attribute("LendersTradingName", String, "Lenders Trading Name", func() {
+	Attribute("LendersTradingName", String, func() {
+		Description("Lenders Trading Name")
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "2")
 	})
 
-	// The Lenders Branch Name, where the fraud is reported to have taken place.
-	//
-	// Mandatory Field
-	// Alphanumeric
-	// Not more than 50 characters
-	Attribute("LendersBranchName", String, "Lenders Branch Name", func() {
+	Attribute("LendersBranchName", String, func() {
+		Description("Lenders Branch Name, where the fraud is reported ")
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "3")
 	})
 
@@ -49,173 +42,152 @@ var FraudActivity = Type("fraudactivity", func() {
 	// e.g. 098 for a bank whose code is 98.
 	// YYY is the Lenders Branch Code left padded with Zeros
 	// e.g. 009 for a branch whose code is 9.
-	//
-	// Mandatory Field
-	// Alphanumeric
-	// Not more than 7 characters
-	Attribute("LendersBranchCode", String, "Lenders Branch Code", func() {
+	Attribute("LendersBranchCode", String, func() {
+		Description("Lenders Branch Code")
+		MinLength(1)
+		MaxLength(7)
 		Meta("rpc:tag", "4")
 	})
 
-	// Client Reference Number Linking to
-	// Account involved in the Fraud in the Lender’s system.
+	// Client Reference Number Linking to Account
+	// involved in the Fraud in the Lender’s system.
 	// This is for Client-Centric systems.
-	//
-	// Data is Alpha Numeric
-	// Not more than 20 characters
-	Attribute("ClientNumber", String, "Client Number", func() {
+	Attribute("ClientNumber", String, func() {
+		MinLength(1)
+		MaxLength(20)
+		Description("client reference number linking to account involved in fraud")
 		Meta("rpc:tag", "5")
 	})
 
-	// Account Number Linking to Account involved in the Fraud, in the Lender’s System.
-	//The Account Number Is the Same as Client Number for Account Centric Systems.
-	//
-	// Mandatory field
-	// Data is Alpha Numeric
-	// Not more than 20 characters
-	Attribute("AccountNumber", String, "Account Number", func() {
+	// Account Number Linking to Account involved
+	// in the Fraud, in the Lender’s System.
+	// The Account Number Is the Same as Client Number
+	// for Account Centric Systems.
+	Attribute("AccountNumber", String, func() {
+		Description("account number linking to account involved in fraud")
+		MinLength(1)
+		MaxLength(20)
 		Meta("rpc:tag", "6")
 	})
 
-	// Brief Description of fraud type.
-	//
-	// Alphanumeric
-	// Not more than 50 Characters
 	Attribute("FraudType", String, "Fraud Type", func() {
+		Description("brief description of fraud type")
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "7")
 	})
 
-	// Date on which Fraud took place.
-	//
-	// Date Field
-	// Not more than 8 characters
-	// Can’t be in future
-	Attribute("FraudIncidentDate", String, "Fraud Incident Date", func() {
+	Attribute("FraudIncidentDate", String, func() {
+		Description("Date on which Fraud took place.")
+		MaxLength(8)
+		Format(FormatDate)
 		Meta("rpc:tag", "8")
 	})
 
-	// Date on which Fraud was reported.
-	//
-	// Date Field
-	// Not more than 8 Characters
-	// Can’t be in future
-	Attribute("FraudReportDate", String, "Fraud Report Date", func() {
+	Attribute("FraudReportDate", String, func() {
+		Description("Date on which Fraud was reported")
+		MaxLength(8)
+		Format(FormatDate)
 		Meta("rpc:tag", "9")
 	})
 
-	// Amount involved in Fraud
-	//
-	// Amount Field
-	// Not more than 16 characters
-	Attribute("Amount", String, "Amount", func() {
+	Attribute("Amount", Int64, func() {
+		Description("Amount involved in Fraud")
+		MinLength(1)
+		MaxLength(16)
+		Minimum(0)
 		Meta("rpc:tag", "10")
 	})
 
-	// Actual loss incurred in the fraud as at reporting date.
-	//
-	// Currency field
-	// Not more than 16 Characters
-	Attribute("LossAmount", String, "Loss Amount", func() {
+	Attribute("LossAmount", Int64, func() {
+		Description("Actual loss incurred in the Fraud as at reporting date")
+		MinLength(1)
+		MaxLength(16)
+		Minimum(0)
 		Meta("rpc:tag", "11")
 	})
 
-	// Currency code of the Amount involved in the Fraud.
-	// Default is Kenya Shillings
-	//
-	// Alphanumeric
-	// Not more than 3 Characters
-	// ISO Currency Codes
-	Attribute("CurrencyCode", String, "Currency Code", func() {
+	Attribute("CurrencyCode", String, func() {
+		Description("Currency code of the Amount involved in the Fraud") // ISO Currency Codes
+		MinLength(3)
+		MaxLength(3)
+		Default("KES") // Default is Kenya Shillings
 		Meta("rpc:tag", "12")
 	})
 
-	// Incident Details
-	// Alphanumeric
-	// Not more than 200 characters
-	Attribute("IncidentDetails", String, "Incident Details", func() {
+	Attribute("IncidentDetails", String, func() {
+		Description("Incident Details")
+		MinLength(1)
+		MaxLength(200)
 		Meta("rpc:tag", "13")
 	})
 
-	// A brief on the Forensic evidence
-	//
-	// Alphanumeric
-	// Not more than 200 Characters
-	Attribute("ForensicInformation", String, "Forensic Information", func() {
+	Attribute("ForensicInformation", String, func() {
+		Description("A brief on the Forensic evidence")
+		MinLength(1)
+		MaxLength(200)
 		Meta("rpc:tag", "14")
 	})
 
-	// The Family Name or Surname of the Person Involved in the Fraud.
-	//
-	// Alphanumeric
-	// More than 1 character
-	// Mandatory
-	// Not more than 50 Characters
-	// Allow Hyphen, Apostrophe, Space,
 	Attribute("Surname", String, "Surname", func() {
+		Description("Family Name or Surname of the Person Involved in the Fraud") // Allow Hyphen, Apostrophe, Space.
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "15")
 	})
 
-	// The First Name of the Person Involved in the Fraud.
-	//
-	// Alphanumeric
-	// More than 1 character
-	// Mandatory
-	// Not more than 50 Characters
-	// Allow Hyphen, Apostrophe
 	Attribute("Forename1", String, "The First Name", func() {
+		Description("The First Name of the Person Involved in the Fraud") // Allow Hyphen, Apostrophe, Space.
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "16")
 	})
 
-	// The Given Name of the Person Involved in the Fraud.
-	//
-	// Alphanumeric
-	// More than 1 character
-	// Not more than 50 Characters
-	// Allow Hyphen, Apostrophe,
 	Attribute("Forename2", String, "The Given Name", func() {
+		Description("Given Name of the Person Involved in the Fraud.") // Allow Hyphen, Apostrophe, Space.
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "17")
 	})
 
-	// Other Name or Initials of the Person Involved in the Fraud.
-	//
-	// Alphanumeric
-	// Not more than 50 Characters
-	// Allow Hyphen, Apostrophe.
 	Attribute("Forename3", String, "Other Name or Initials", func() {
+		Description("Other Name or Initials of the Person Involved in the Fraud") // Allow Hyphen, Apostrophe, Space.
+		MinLength(1)
+		MaxLength(50)
 		Meta("rpc:tag", "18")
 	})
 
-	// Refer to for Acceptable Values
 	// 001 - National ID
 	// 002 - Passport
 	// 003 - Alien Registration
 	// 004 - Service ID
 	// 005 - Company Registration Number
-	//
-	// Mandatory Field
-	// Data is Alpha Numeric
-	// Not more than 3 Characters
-	Attribute("PrimaryIDocumentType", String, "Primary Identification Document Type", func() {
+	Attribute("PrimaryIDocumentType", Int, func() {
+		Description("Primary Identification Document Type")
+		Enum(001, 002, 003, 004, 005)
+		MinLength(3)
+		MaxLength(3)
+		Minimum(001)
+		Maximum(005)
 		Meta("rpc:tag", "19")
 	})
 
-	// The Number of the Primary Identification Document provided on Opening of the Account.
-	//
-	// Mandatory Field
 	// For ID: Numeric Characters, Between 1-8 characters
 	// For Passport: Alphanumeric
 	// For Alien: Numeric characters, Not more than 6 characters
-	// For Service ID: Numeric Characters, Not more than 6 characters
-	Attribute("PrimaryIDocumentNumber", String, "Primary Identification Document Number", func() {
+	// For Service ID: Numeric Characters , Not more characters than 6
+	Attribute("PrimaryIDocumentNumber", String, func() {
+		Description("Primary Identification Document Number")
+		MinLength(6)
+		MaxLength(8)
 		Meta("rpc:tag", "20")
 	})
 
-	// The Equivalent Amount involved in the fraud in KES.
-	//
-	// Mandatory Field
-	// Currency Field
-	// No more than 16 Characters
-	Attribute("AmountInKES", String, "Amount in Kenya Shillings", func() {
+	Attribute("AmountInKES", Int64, func() {
+		Description("Equivalent Amount involved in the fraud in KES")
+		MinLength(1)
+		MaxLength(16)
+		Minimum(0)
 		Meta("rpc:tag", "21")
 	})
 
@@ -225,8 +197,20 @@ var StoredFraudActivity = ResultType("application/vnd.goa.fraudactivity", func()
 	TypeName("StoredFraudActivity")
 	Attributes(func() {
 		Extend(FraudActivity)
-		Required()
+		Required(
+			"LendersRegisteredName",
+			"LendersTradingName",
+			"LendersBranchName",
+			"LendersBranchCode",
+			"AccountNumber",
+			"Surname",
+			"Forename1",
+			"PrimaryIDocumentType",
+			"PrimaryIDocumentNumber",
+			"AmountInKES",
+		)
 	})
+
 	View("default", func() {
 		Attribute("LendersRegisteredName")
 		Attribute("LendersTradingName")
@@ -246,6 +230,19 @@ var StoredFraudActivity = ResultType("application/vnd.goa.fraudactivity", func()
 		Attribute("Forename1")
 		Attribute("Forename2")
 		Attribute("Forename3")
+		Attribute("PrimaryIDocumentType")
+		Attribute("PrimaryIDocumentNumber")
+		Attribute("AmountInKES")
+	})
+
+	View("mandatory", func() {
+		Attribute("LendersRegisteredName")
+		Attribute("LendersTradingName")
+		Attribute("LendersBranchName")
+		Attribute("LendersBranchCode")
+		Attribute("AccountNumber")
+		Attribute("Surname")
+		Attribute("Forename1")
 		Attribute("PrimaryIDocumentType")
 		Attribute("PrimaryIDocumentNumber")
 		Attribute("AmountInKES")
