@@ -42,3 +42,50 @@ const (
 	PaymentStoppedByDrawer                                             = "79 – Payment Stopped by Drawer"
 	ConfirmationAwaited                                                = "80 – Confirmation Awaited"
 )
+
+type BouncedCheque struct {
+
+	// The Type of Drawer.
+	ClientType   ClientType
+	CustomerName CustomerName
+	CompanyName  CompanyName
+	PrimaryID    PrimaryID
+
+	// Bank and Branch code on Bounced Cheque
+	BranchCodeOnCheque string
+
+	// Client Reference Code Linking Drawer to Banking System
+	ClientNumber ClientNumber
+
+	// Bank Account from which the Bounced Cheque was drawn
+	AccountNumber AccountNumber
+
+	// Type of Cheque.
+	ChequeAccountType ChequeType
+
+	// Amount on cheque
+	ChequeAmount float64
+
+	// Cheque Number
+	ChequeNumber string
+
+	// ISO Currency Code
+	ChequeCurrency CurrencyCode
+
+	// Date on Bounced Cheque
+	ChequeDate string
+
+	// The Date the Cheque was unpaid by the Drawee Bank
+	ChequeBounceDate string
+
+	// Reason Code for Bouncing cheque
+	ChequeBounceReasonCodes BouncedChequeReason
+
+	// The Loan Account to which the Cheque was deposited to.
+	LoanAccount string
+
+	// The amount on the Cheque in Kenya Shillings.
+	// If the Cheque is drawn in foreign currency, use the Exchange Rate on the Reporting Date.
+	// If the Cheque is drawn in Kenya Shillings, report the actual amount on the cheque.
+	ChequeAmountInKES float64
+}
