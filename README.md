@@ -1,4 +1,4 @@
-# Kreditbureau - Credit Reporting for Financial Inclusivity.
+# Credit Reporting for Financial Inclusivity.
 
 [Kreditbureau](https://github.com/wondenge/kreditbureau) is a financial tool for CRBSs to help in managing of credit reports from across the Financial Sector in Kenya. Kreditbureau adheres to v4 of the DST Validation that was released by the [Central Bank of Kenya](https://www.centralbank.go.ke/), following consultations among commercial banks, the [KDIC](https://kdic.go.ke), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
