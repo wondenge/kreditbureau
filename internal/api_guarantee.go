@@ -22,3 +22,13 @@ type Membership struct {
 	MemberStatus     GroupGuaranteeMemberStatus
 	MemberStatusDate string
 }
+
+type Guarantee struct {
+	Lenders           Lenders
+	Group             Group
+	CustomerName      CustomerName
+	UserID            UserID
+	ClientNumber      ClientNumber
+	PersonalPINNumber PersonalPINNumber
+	Membership        Membership
+}

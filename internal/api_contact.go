@@ -1,6 +1,6 @@
 package internal
 
-type ContactUpload struct {
+type Contact struct {
 	SubmissionDate        SubmissionDate
 	ClientType            ClientType
 	CustomerName          CustomerName

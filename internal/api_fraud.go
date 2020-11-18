@@ -1,6 +1,6 @@
 package internal
 
-type FraudActivity struct {
+type Fraud struct {
 	Lenders       Lenders
 	ClientNumber  ClientNumber
 	AccountNumber AccountNumber

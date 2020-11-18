@@ -9,7 +9,26 @@ const (
 	Relist                           = "D- Relist"
 )
 
-type DeletionRelist struct {
+type HistoryPurge struct {
+
+	// The type of the intended deletion.
+	FunctionType FunctionType
+	CustomerName CustomerName
+
+	// Primary Identification Document provided on opening the account.
+	PrimaryID     PrimaryID
+	AccountNumber AccountNumber
+
+	// The date the record is to be effected.
+	SubmissionDate SubmissionDate
+
+	// The new number of days the account has been in arrears.
+	// This should be rounded to 20days.
+	NewDaysInArrears int
+}
+
+
+type HistoryRelist struct {
 
 	// The type of the intended deletion.
 	FunctionType FunctionType

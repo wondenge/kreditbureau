@@ -2,7 +2,7 @@ package internal
 
 type ApplicationStatus string
 type ApplicationDeclineReason string
-type StatusUpdateReason string
+type ApplicationStatusUpdateReason string
 type UpdateFunction string
 
 const (
@@ -27,9 +27,9 @@ const (
 )
 
 const (
-	AdditionalIncomeProvided  StatusUpdateReason = "A = Additional Income provided"
-	CreditProfileUpdated                         = "B = Credit Profile Updated " // e.g. if client presents proof that an account is paid up or status on credit bureau is out dated
-	AdditionalDepositByClient                    = "C= Additional deposit provided by client"
+	AdditionalIncomeProvided  ApplicationStatusUpdateReason = "A = Additional Income provided"
+	CreditProfileUpdated                                    = "B = Credit Profile Updated " // e.g. if client presents proof that an account is paid up or status on credit bureau is out dated
+	AdditionalDepositByClient                               = "C= Additional deposit provided by client"
 )
 
 const (
@@ -43,3 +43,42 @@ const (
 	UnlinkGuarantor                         = "H – Unlink a Guarantor"
 	UnlinkStakeholder                       = "I – Unlink a Stakeholder"
 )
+
+type CreditApplication struct {
+	Lenders           Lenders
+	ClientType        ClientType
+	CustomerName      CustomerName
+	Registrar         Registrar
+	UserID            UserID
+	ClientNumber      ClientNumber
+	PersonalPINNumber PersonalPINNumber
+	AccountNumber     AccountNumber
+
+	// The Date the Application was made to the Lender
+	ApplicationDate string
+
+	// Internal Application Reference number
+	ApplicationNumber       string
+	FacilityApplicationType SecurityType
+
+	// Loan Amount applied for.
+	ApplicationAmount float64
+
+	// Currency in which facility is requested for.
+	// Default is KES
+	ApplicationCurrency CurrencyCode
+
+	// The Account Product Type.
+	ProductType AccountProductType
+
+	// Number of Months Applied for.
+	TermOfLoan int
+
+	// The Current status of the Application.
+	ApplicationStatus        ApplicationStatus
+	ApplicationDeclineReason ApplicationDeclineReason
+
+	// Date of status of Update
+	ApplicationStatusDate         string
+	ApplicationStatusUpdateReason ApplicationStatusUpdateReason
+}

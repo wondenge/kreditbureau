@@ -1,6 +1,6 @@
 package internal
 
-type AccountsMerger struct {
+type Merger struct {
 	PrimaryID        PrimaryID
 	CustomerName     CustomerName
 	NewAccountNumber NewAccountNumber

@@ -7,23 +7,7 @@ const (
 	Delink            = "002 – Delink"
 )
 
-type LinkIDFromAccount struct {
-	CustomerName  CustomerName
-	AccountNumber AccountNumber
 
-	// Primary Identification Document provided on Opening the Account.
-	// Primary ID to Link.
-	LinkPrimaryID PrimaryID
-}
-
-type DelinkIDFromAccount struct {
-	CustomerName  CustomerName
-	AccountNumber AccountNumber
-
-	// Primary Identification Document provided on Opening the Account.
-	// Primary ID to Delink.
-	DelinkPrimaryID PrimaryID
-}
 
 type LinkIDs struct {
 	LinkDelinkFunction LinkDelink
