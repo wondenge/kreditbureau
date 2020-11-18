@@ -8,7 +8,7 @@ const (
 	FriendOrWorkColleague                        = "C = Friend/Work Colleague"
 )
 
-type GuarantorPayload struct {
+type NewGuarantor struct {
 	Lenders                Lenders
 	ClientNumber           ClientNumber
 	AccountNumber          AccountNumber

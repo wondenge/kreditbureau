@@ -43,7 +43,7 @@ const (
 	ConfirmationAwaited                                                = "80 – Confirmation Awaited"
 )
 
-type BouncedCheque struct {
+type Cheque struct {
 
 	// The Type of Drawer.
 	ClientType   ClientType

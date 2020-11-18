@@ -26,7 +26,7 @@ const (
 	SoleCollateral                      = "N= Sole Collateral"
 )
 
-type CollateralRegister struct {
+type Register struct {
 	Lenders           Lenders
 	ClientNumber      ClientNumber
 	AccountNumber     AccountNumber

@@ -44,7 +44,7 @@ const (
 	UnlinkStakeholder                       = "I – Unlink a Stakeholder"
 )
 
-type CreditApplication struct {
+type Facility struct {
 	Lenders           Lenders
 	ClientType        ClientType
 	CustomerName      CustomerName
