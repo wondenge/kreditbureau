@@ -2,8 +2,6 @@
 
 [Kreditbureau](https://github.com/wondenge/kreditbureau) is a financial tool for CRBSs to help in managing of credit reports from across the Financial Sector in Kenya. Kreditbureau adheres to v4 of the DST Validation that was released by the [Central Bank of Kenya](https://www.centralbank.go.ke/), following consultations among commercial banks, the [KDIC](https://kdic.go.ke), Microfinance Banks and the Credit Reference Bureaus; for the implementation of full-file credit information sharing.
 
-# 1. Manthle - Monthly Batch APIs
-
 ## Non-Individual Consumer Account API
 
 - API is mandatory for credit providers who have advanced a credit facility to non-individual consumers. These are registered institutions such as companies, partnerships, societies, church, school, etc.
@@ -81,8 +79,6 @@ Also included, is the Consumer’s corresponding account information is included
 - Some group methodologies have sub-groups, where members of a sub-group directly guarantee a loan of any of the members in that sub-group. In this case, the lender must assign a sub-group ID to each sub-group within a group.
 
 - If a sub-group exists within a group (thus a Sub-Group ID has been filled), only members listed with the same sub-group will be considered as guarantors of the loan. If no sub-group exists, all members of the group are considered as direct guarantors of the loan.
-
-# 2. Dale - Daily Batch APIs
 
 ## Daily Payment API
 
